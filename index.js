@@ -5,7 +5,7 @@ map.addControl(new L.Control.Fullscreen())
 L.tileLayer(
   "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
   {
-    attribution: '&copy; <a href=&quot;http://osm.org/copyright&quot;>OpenStreetMap</a> contributors',
+    attribution: 'Data: <a href="https://github.com/repodata/repodata/">RepoData (ODbL 1.0)</a> / Maps: &copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
   }
 ).addTo(map)
 
@@ -13,7 +13,17 @@ const markers = L.geoJSON(null, {
   pointToLayer: createClusterIcon,
   onEachFeature: (feature, layer) => {
     if (feature.properties.repository_name_unauthorized) {
-      layer.bindPopup(feature.properties.repository_name_unauthorized)
+      const r = feature.properties
+      const parentOrg = r.parent_org_unauthorized ? r.parent_org_unauthorized + `<br>` : ``
+      const desc = `
+        ${r.repository_name_unauthorized}<br>
+        ${parentOrg}
+        ${r.street_address_1}<br>
+        ${r.st_city}, ${r.state}<br>
+        ${r.st_zip_code_5_numbers}<br>
+        <em>${r.repository_type}</em> 
+      `
+      layer.bindPopup(desc)
     }
   }
 }).addTo(map)
