@@ -1,13 +1,11 @@
-var map = L.map('map').setView([41.850033, -96.6500523], 3)
+var map = L.map('map').setView([38.850033, -96.6500523], 5)
 
 map.addControl(new L.Control.Fullscreen())
 
-L.tileLayer(
-  "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
-  {
-    attribution: 'Data: <a href="https://github.com/repodata/repodata/">RepoData (ODbL 1.0)</a> / Maps: &copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
-  }
-).addTo(map)
+L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/NatGeo_World_Map/MapServer/tile/{z}/{y}/{x}', {
+	attribution: 'Data: <a href="https://github.com/repodata/repodata/">RepoData (ODbL 1.0)</a> | Tiles &copy; Esri &mdash; National Geographic, Esri, DeLorme, NAVTEQ, UNEP-WCMC, USGS, NASA, ESA, METI, NRCAN, GEBCO, NOAA, iPC',
+	maxZoom: 16
+}).addTo(map)
 
 const markers = L.geoJSON(null, {
   pointToLayer: createClusterIcon,
