@@ -19,7 +19,8 @@ const markers = L.geoJSON(null, {
         ${r.street_address_1}<br>
         ${r.st_city}, ${r.state}<br>
         ${r.st_zip_code_5_numbers}<br>
-        <em>${r.repository_type}</em> 
+        <em>${r.repository_type}</em><br>
+        <a target="_blank" href="http://maps.google.com/maps?q=&layer=c&cbll=${r.longitude},${r.latitude}">Street View</a>
       `
       layer.bindPopup(desc)
     }
