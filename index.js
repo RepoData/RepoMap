@@ -4,7 +4,7 @@ map.addControl(new L.Control.Fullscreen())
 
 L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/NatGeo_World_Map/MapServer/tile/{z}/{y}/{x}', {
 	attribution: 'Data: <a href="https://github.com/repodata/repodata/">RepoData (ODbL 1.0)</a> | Tiles &copy; Esri &mdash; National Geographic, Esri, DeLorme, NAVTEQ, UNEP-WCMC, USGS, NASA, ESA, METI, NRCAN, GEBCO, NOAA, iPC',
-	maxZoom: 16
+	maxZoom: 15
 }).addTo(map)
 
 const markers = L.geoJSON(null, {

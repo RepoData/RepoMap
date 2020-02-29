@@ -13,7 +13,7 @@ fetch('data.geojson')
       log: true,
       radius: 60,
       extent: 256,
-      maxZoom: 16
+      maxZoom: 15
     }).load(geojson.features)
 
     console.log(index.getTile(0, 0, 0))
